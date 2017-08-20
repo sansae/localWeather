@@ -1,0 +1,19 @@
+body {
+  background: black;
+  color: white;
+  text-align: center
+}
+
+h1 {
+  text-decoration: underline
+}
+
+button {
+  background: none;
+  border: none;
+  font-size: 30px;
+}
+
+h3 > button > span {
+  color: blue;
+}
