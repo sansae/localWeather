@@ -8,10 +8,11 @@ function getLocation() {
   function showCoords(pos) {
     var lon = pos.coords.longitude;
     var lat = pos.coords.latitude;
-    $("#coord").html("Longitude: " + lon + "<br>" + "Latitude: " + lat);
-
     var api = "https://fcc-weather-api.glitch.me/api/current?lat="+lat+"&lon="+lon;
+
     $.getJSON(api, function(json){
+      $('#gifImage').show();
+
       var city = json.name;
       var state = json.sys.country;
       temp = json.main.temp;
@@ -28,6 +29,13 @@ function getLocation() {
       var img = new Image();
       img.src = icon;
       $("#icon").html(img);
+    })
+    .done(function() {
+      $('#gifImage').hide();
+    })
+    .fail(function() {
+      $('#gifImage').hide();
+      $('#content').html("Could not load the weather data :(")
     });
   };
 };
