@@ -4,6 +4,10 @@ body {
   text-align: center
 }
 
+#content {
+  margin-top: 50px;
+}
+
 h1 {
   text-decoration: underline
 }
