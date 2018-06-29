@@ -21,7 +21,7 @@ function getLocation() {
 
       $("#title").html("Today's Weather");
       $("#location").html(city + ", " + state);
-      $('#temperature').html('<span id="temp">Temperature</span><button onclick="switchScale()"><span id="scale">F</span></button>');
+      $('#temperature').html('<span id="temp"></span><button onclick="switchScale()"><span id="scale">F</span></button>');
       $("#temp").html(fahrenheit);
       $("#forecast").html(forecast);
 
