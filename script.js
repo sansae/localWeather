@@ -1,5 +1,6 @@
 var temp;
-var far;
+var fahrenheit;
+var celcius;
 
 function getLocation() {
   navigator.geolocation.getCurrentPosition(showCoords);
@@ -11,15 +12,15 @@ function getLocation() {
 
     var api = "https://fcc-weather-api.glitch.me/api/current?lat="+lat+"&lon="+lon;
     $.getJSON(api, function(json){
-      console.log(json.coord);
       var city = json.name;
       var state = json.sys.country;
       temp = json.main.temp;
+      fahrenheit = Math.round((((temp * 9) / 5) + 32) * 10) / 10;
       var forecast = json.weather[0].main;
       var icon = json.weather[0].icon;
 
       $("#location").html(city + ", " + state);
-      $("#temp").html(temp);
+      $("#temp").html(fahrenheit);
       $("#forecast").html(forecast);
 
       var img = new Image();
@@ -29,22 +30,22 @@ function getLocation() {
   };
 };
 
-function convertToCel() {
-  far = (((temp * 9) / 5) + 32).toFixed(1);
-  $("#temp").html(far);
-  $("#scale").html("F");
-};
-
-function convertToFah() {
-  cel = (((far - 32) * 5) / 9).toFixed(1);
-  $("#temp").html(cel);
+function convertToCelcius() {
+  celcius = Math.round((((fahrenheit - 32) * 5) / 9) * 10) / 10;
+  $("#temp").html(celcius);
   $("#scale").html("C");
 };
 
+function convertToFahrenheit() {
+  fahrenheit = Math.round((((temp * 9) / 5) + 32) * 10) / 10;
+  $("#temp").html(fahrenheit);
+  $("#scale").html("F");
+};
+
 function switchScale() {
-  if ($("#scale").text() == "C") {
-    convertToCel();
+  if ($("#scale").text() == "F") {
+    convertToCelcius();
   } else {
-    convertToFah();
+    convertToFahrenheit();
   };
 };
