@@ -11,7 +11,7 @@ function getLocation() {
     var api = "https://fcc-weather-api.glitch.me/api/current?lat="+lat+"&lon="+lon;
 
     $.getJSON(api, function(json){
-      $('#gifImage').show();
+      $('#loadingMsg').show();
 
       var city = json.name;
       var state = json.sys.country;
@@ -31,10 +31,10 @@ function getLocation() {
       $("#icon").html(img);
     })
     .done(function() {
-      $('#gifImage').hide();
+      $('#loadingMsg').hide();
     })
     .fail(function() {
-      $('#gifImage').hide();
+      $('#loadingMsg').hide();
       $('#content').html("Could not load the weather data :(")
     });
   };
