@@ -19,7 +19,9 @@ function getLocation() {
       var forecast = json.weather[0].main;
       var icon = json.weather[0].icon;
 
+      $("#title").html("Today's Weather");
       $("#location").html(city + ", " + state);
+      $('#temperature').html('<span id="temp">Temperature</span><button onclick="switchScale()"><span id="scale">F</span></button>');
       $("#temp").html(fahrenheit);
       $("#forecast").html(forecast);
 
