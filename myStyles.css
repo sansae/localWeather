@@ -16,6 +16,7 @@ button {
   background: none;
   border: none;
   font-size: 30px;
+  cursor: pointer;
 }
 
 h3 > button > span {
